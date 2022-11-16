@@ -8,8 +8,8 @@ namespace UgeCase2.Codes;
 
     public enum EnumForTeacherStudents
     {
-        Teachers = 1,
-        Students = 2,
-        Subjects = 3
+        Lærer = 1,
+        Elev = 2,
+        Fag = 3
     }
     

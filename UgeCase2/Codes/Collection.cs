@@ -10,54 +10,48 @@ namespace UgeCase2.Codes
 {
     internal class Collection
     {
-
-        //List<string?> _allSubjects = new() { "Clientsideprogrammering", "Studieteknik", "Grundlæggende programmering", "OOP", "Databaseprogrammering", "Computerteknologi", "Netværk" };
-        //List<string?> _allStudents = new() { "Amanda Gudmand", "Aleksander Runge", "Camilla Kløjgaard", "Dennis Paaske", "Iheb Boukthir", "Jakob Rasmussen", "Micki Olsen", "Mikkel Rantala", "Mikkel Jensen", "Niclas Jensen", "Ozan Korkmaz", "Rasmus Wiell", "Rune Hansen", "Sanjit Poudel" };
-        //List<string?> _studieteknikStudents = new() { "Amanda Gudmand", "Aleksander Runge", "Dennis Paaske", "Iheb Boukthir", "Jakob Rasmussen", "Micki Olsen", "Mikkel Rantala", "Mikkel Jensen", "Niclas Jensen", "Rasmus Wiell", "Rune Hansen", "Sanjit Poudel" };
-        //List<string?> _allTeachers = new() { "Peter Lindenskov", "Niels Olesen", "Jan Johansen", "Henrik Poulsen" };
-
+        string[] _allSubjects = { "Clientsideprogrammering", "Studieteknik", "Grundlæggende programmering", "OOP", "Databaseprogrammering", "Computerteknologi", "Netværk" };
+        string[] _allStudents = { "Amanda Gudmand", "Aleksander Runge", "Adil Ajak", "Camilla Kløjgaard", "Dennis Paaske", "Iheb Boukthir", "Jakob Rasmussen", "Micki Olsen", "Mikkel Rantala", "Mikkel Jensen", "Mikkel Kjærgaard", "Niclas Jensen", "Ozan Korkmaz", "Rasmus Wiell", "Rune Hansen", "Sanjit Poudel" };
+        string[] _studieteknikStudents = { "Amanda Gudmand", "Aleksander Runge", "Adil Ajak", "Dennis Paaske", "Iheb Boukthir", "Jakob Rasmussen", "Micki Olsen", "Mikkel Rantala", "Mikkel Jensen", "Mikkel Kjærgaard", "Niclas Jensen", "Rasmus Wiell", "Rune Hansen", "Sanjit Poudel" };
+        string[] _allTeachers = { "Peter Lindenskov", "Niels Olesen", "Jan Johansen", "Henrik Poulsen" };
 
         public List<List<object>> ListCreation()
         {
-            string[] allSubjects = { "Clientsideprogrammering", "Studieteknik", "Grundlæggende programmering", "OOP", "Databaseprogrammering", "Computerteknologi", "Netværk" };
-            string[] allStudents = { "Amanda Gudmand", "Aleksander Runge", "Adil Ajak", "Camilla Kløjgaard", "Dennis Paaske", "Iheb Boukthir", "Jakob Rasmussen", "Micki Olsen", "Mikkel Rantala", "Mikkel Jensen", "Mikkel Kjærgaard", "Niclas Jensen", "Ozan Korkmaz", "Rasmus Wiell", "Rune Hansen", "Sanjit Poudel" };
-            string[] studieteknikStudents = { "Amanda Gudmand", "Aleksander Runge", "Dennis Paaske", "Iheb Boukthir", "Jakob Rasmussen", "Micki Olsen", "Mikkel Rantala", "Mikkel Jensen", "Mikkel Kjærgaard", "Niclas Jensen", "Rasmus Wiell", "Rune Hansen", "Sanjit Poudel" };
-            string[] allTeachers = { "Peter Lindenskov", "Niels Olesen", "Jan Johansen", "Henrik Poulsen" };
 
             List<object> clientsideprogrammering = new();
-            clientsideprogrammering.Add(allSubjects[0]);
-            clientsideprogrammering.Add(allTeachers[0]);
-            clientsideprogrammering.Add(allStudents);
+            clientsideprogrammering.Add(_allSubjects[0]);
+            clientsideprogrammering.Add(_allTeachers[0]);
+            clientsideprogrammering.Add(_allStudents);
 
             List<object> studieteknik = new();
-            studieteknik.Add(allSubjects[1]);
-            studieteknik.Add(allTeachers[1]);
-            studieteknik.Add(studieteknikStudents);
+            studieteknik.Add(_allSubjects[1]);
+            studieteknik.Add(_allTeachers[1]);
+            studieteknik.Add(_studieteknikStudents);
 
-            List<object> grundlæggendeprogrammering= new();
-            grundlæggendeprogrammering.Add(allSubjects[2]);
-            grundlæggendeprogrammering.Add(allTeachers[1]);
-            grundlæggendeprogrammering.Add(allStudents);
+            List<object> grundlæggendeprogrammering = new();
+            grundlæggendeprogrammering.Add(_allSubjects[2]);
+            grundlæggendeprogrammering.Add(_allTeachers[1]);
+            grundlæggendeprogrammering.Add(_allStudents);
 
             List<object> oop= new();
-            oop.Add(allSubjects[3]);
-            oop.Add(allTeachers[1]);
-            oop.Add(allStudents);
+            oop.Add(_allSubjects[3]);
+            oop.Add(_allTeachers[1]);
+            oop.Add(_allStudents);
 
             List<object> databaseprogrammering = new();
-            databaseprogrammering.Add(allSubjects[4]);
-            databaseprogrammering.Add(allTeachers[1]);
-            databaseprogrammering.Add(allStudents);
+            databaseprogrammering.Add(_allSubjects[4]);
+            databaseprogrammering.Add(_allTeachers[1]);
+            databaseprogrammering.Add(_allStudents);
 
             List<object> computerteknologi = new();
-            computerteknologi.Add(allSubjects[5]);
-            computerteknologi.Add(allTeachers[2]);
-            computerteknologi.Add(allStudents);
+            computerteknologi.Add(_allSubjects[5]);
+            computerteknologi.Add(_allTeachers[2]);
+            computerteknologi.Add(_allStudents);
 
             List<object> netværk = new();
-            netværk.Add(allSubjects[6]);
-            netværk.Add(allTeachers[3]);
-            netværk.Add(allStudents);
+            netværk.Add(_allSubjects[6]);
+            netværk.Add(_allTeachers[3]);
+            netværk.Add(_allStudents);
 
             List<List<object>> subjects = new();
             {
@@ -72,46 +66,6 @@ namespace UgeCase2.Codes
             return subjects;
         }
 
-    public string[] StudentSearch(List<List<object>>listArray, string GetThisValue)
-        {
-            List<string> tempList = new List<string>();
-            bool isBreak = false;
-
-            foreach (var lists in listArray)
-            {
-                if (isBreak)
-                {
-tempList.Add(
-@$"Læreren: {lists[1].ToString()}
-Fag: {lists[0].ToString()}
------------------------------------------------");
-
-                    isBreak = false;
-                }
-                    foreach (var objects in lists)
-                    {
-                        if (objects.GetType() == typeof(string[]))
-                        {
-                            string[] convertToArray = (string[])objects;
-                            foreach (var studentNames in convertToArray)
-                            {
-                                if (studentNames.Contains(GetThisValue))
-                                {
-
-                                isBreak = true;
-                                break;
-                                }
-                            }
-                        if (isBreak) break;
-                        }
-                    }
-            }
-            //for (int i = 0; i < tempList.Count; i++)
-            //{
-            //    Console.WriteLine(tempList[i]);
-            //}
-            return tempList.ToArray();
-        }
     public string[] TeacherSearch(List<List<object>>Array, string GetThisValue)
     {
             List<string> tempList = new List<string>();
@@ -121,9 +75,12 @@ Fag: {lists[0].ToString()}
                 if (lists.Contains(GetThisValue))
                 {
                     tempList.Add(
-@$"-------------------------------------------------
-Fag: {lists[0].ToString()}
+@$"
+Du søgte efter: {GetThisValue}
+Fag: {lists[0]}
 -----------------------------------------------
+Elever:
+
 ");
 
                     foreach (var objects in lists)
@@ -140,9 +97,49 @@ Fag: {lists[0].ToString()}
                     }
                 }
         }
+            if (tempList.Count <= 0) return null;
+
             return tempList.ToArray();
     }
-        public string[] SubjectSearch(List<List<object>> Array, string GetThisValue)
+    public string[] StudentSearch(List<List<object>>Array, string GetThisValue)
+        {
+            List<string> tempList = new List<string>();
+            bool isBreak = false;
+
+            foreach (var lists in Array)
+            {
+                if (isBreak)
+                {
+                    tempList.Add(
+                    @$"Du søgte efter: {GetThisValue}
+Læreren: {lists[1].ToString()}
+Fag: {lists[0].ToString()}
+-----------------------------------------------");
+
+                    isBreak = false;
+                }
+                foreach (var objects in lists)
+                    {
+                        if (objects.GetType() == typeof(string[]))
+                        {
+                            string[] convertToArray = (string[])objects;
+                            foreach (var studentNames in convertToArray)
+                            {
+                                if (studentNames.Contains(GetThisValue))
+                                {
+                                isBreak = true;
+                                break;
+                                }
+                        }
+                        if (isBreak) break;
+                        }
+                    }
+            }
+            if (tempList.Count <= 0) return null;
+
+            return tempList.ToArray();
+        }
+    public string[] SubjectSearch(List<List<object>> Array, string GetThisValue)
         {
             List<string> tempList = new List<string>();
 
@@ -151,9 +148,10 @@ Fag: {lists[0].ToString()}
                 if (lists.Contains(GetThisValue))
                 {
                     tempList.Add(
-@$"-------------------------------------------------
-Lærer: {lists[1].ToString()}
+@$"Lærer: {lists[1].ToString()}
 -----------------------------------------------
+Elever:
+
 ");
 
                     foreach (var objects in lists)
@@ -171,11 +169,24 @@ Lærer: {lists[1].ToString()}
 
                 }
             }
-            for (int i = 0; i < tempList.Count; i++)
-            {
-                Console.WriteLine(tempList[i]);
-            }
+            if (tempList.Count <= 0) return null;
             return tempList.ToArray();
+        }
+    public string[] GetOptions(string? GetValueForThisEnum)
+        {
+            if (GetValueForThisEnum.Equals(EnumForTeacherStudents.Lærer.ToString()))
+            {
+                return _allTeachers;
+            }
+            else if (GetValueForThisEnum.Equals(EnumForTeacherStudents.Elev.ToString()))
+            {
+                return _allStudents;
+            }
+            else if (GetValueForThisEnum.Equals(EnumForTeacherStudents.Fag.ToString()))
+            {
+                return _allSubjects;
+            }
+            return null;
         }
     }
 }
