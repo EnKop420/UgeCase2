@@ -12,8 +12,10 @@ while (tryAgain)
 {
 	Console.WriteLine
 	("Vælg:\n1) Søg efter en lærer\n2) Søg efter en elev\n3) Søg efter et fag\n\ntryk 1, 2 eller 3");
-	int userInput = Convert.ToInt32(Console.ReadLine());
-	if (passIntVal.Contains(userInput))
+
+	string stringInput = Console.ReadLine();
+	bool canParseToInt = Int32.TryParse(stringInput, out int userInput);
+	if (passIntVal.Contains(userInput) && canParseToInt)
 	{
         GetTeachers teachers = new();
         GetStudents students = new();
@@ -65,7 +67,9 @@ while (tryAgain)
 				{
 					Console.WriteLine(ShowResult[i]);
 				}
-			}
+                Console.ReadKey();
+                Console.Clear();
+            }
             else if (ChoosenEnumValue == "Elev")
             {
                 ShowResult = (new TeacherStudentSubject(new GetStudents(), returnedList, ChoosenEnumValue, searchValue).result);
@@ -78,6 +82,8 @@ while (tryAgain)
                 {
                     Console.WriteLine(ShowResult[i]);
                 }
+                Console.ReadKey();
+                Console.Clear();
             }
             else if (ChoosenEnumValue == "Fag")
             {
@@ -92,6 +98,8 @@ while (tryAgain)
 					Console.WriteLine($"-------------------------------------------------\nDu søgte efter: {searchValue}");
                     Console.WriteLine(ShowResult[i]);
                 }
+				Console.ReadKey();
+				Console.Clear();
             }
 			
         }

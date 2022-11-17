@@ -108,6 +108,22 @@ Elever:
 
             foreach (var lists in Array)
             {
+                foreach (var firstLoop in lists)
+                {
+                    if (firstLoop.GetType() == typeof(string[]))
+                    {
+                        string[] convertToArray = (string[])firstLoop;
+                        foreach (var studentNames in convertToArray)
+                        {
+                            if (studentNames.Contains(GetThisValue))
+                            {
+                                isBreak = true;
+                                break;
+                            }
+                        }
+                        if (isBreak) break;
+                    }
+                }
                 if (isBreak)
                 {
                     tempList.Add(
