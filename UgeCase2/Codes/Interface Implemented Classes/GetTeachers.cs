@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UgeCase2.Codes
+namespace UgeCase2.Codes.Interface_Implemented_Classes
 {
     internal class GetTeachers : IShowResult
     {

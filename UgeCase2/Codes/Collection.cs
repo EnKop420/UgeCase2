@@ -11,7 +11,7 @@ namespace UgeCase2.Codes
     internal class Collection
     {
         string[] _allSubjects = { "Clientsideprogrammering", "Studieteknik", "Grundlæggende programmering", "OOP", "Databaseprogrammering", "Computerteknologi", "Netværk" };
-        string[] _allStudents = { "Alexander Runge", "Amanda Gudmand", "Adil Ajak", "Camilla Klojgaard", "Dennis Paaske", "Iheb Boukthir", "Jakob Rasmussen", "Micki Olsen", "Mikkel Rantala", "Mikkel Jensen", "Mikkel Kjærgaard", "Niclas Jensen", "Ozan Korkmaz", "Rasmus Wiell", "Rune Hansen", "Sanjit Poudel" };
+        string[] _allStudents = { "Alexander Runge", "Amanda Gudmand", "Adil Ajak", "Camilla Kløjgaard", "Dennis Paaske", "Iheb Boukthir", "Jakob Rasmussen", "Micki Olsen", "Mikkel Rantala", "Mikkel Jensen", "Mikkel Kjærgaard", "Niclas Jensen", "Ozan Korkmaz", "Rasmus Wiell", "Rune Hansen", "Sanjit Poudel" };
         string[] _studieteknikStudents = { "Amanda Gudmand", "Aleksander Runge", "Adil Ajak", "Dennis Paaske", "Iheb Boukthir", "Jakob Rasmussen", "Micki Olsen", "Mikkel Rantala", "Mikkel Jensen", "Mikkel Kjærgaard", "Niclas Jensen", "Rasmus Wiell", "Rune Hansen", "Sanjit Poudel" };
         string[] _allTeachers = { "Peter Lindenskov", "Niels Olesen", "Jan Johansen", "Henrik Poulsen" };
         public List<List<object>> ListCreation()
@@ -68,6 +68,8 @@ namespace UgeCase2.Codes
         {
             List<string> tempList = new List<string>();
             int isTeacherOrSubject = 1;
+            string? toLowerValue = null;
+            string? GetThisValueToLower = GetThisValue.ToLower();
             if (EnumValue == EnumForTeacherStudents.Lærer.ToString())
             {
                 EnumValue = EnumForTeacherStudents.Fag.ToString();
@@ -78,7 +80,16 @@ namespace UgeCase2.Codes
 
             foreach (var listOfObjects in array)
             {
-                if (listOfObjects.Contains(GetThisValue))
+                    foreach (var strings in listOfObjects)
+                    {
+                    string? stringValue = strings.ToString().ToLower();
+
+                        if (stringValue == GetThisValueToLower.ToLower() && stringValue.GetType() == typeof(string))
+                        {
+                            toLowerValue = strings.ToString().ToLower();
+                        }
+                    }
+                if (toLowerValue == GetThisValueToLower)
                 {
                     tempList.Add(
 @$"-----------------------------------------------
@@ -86,7 +97,7 @@ Du søgte efter: {GetThisValue}
 {EnumValue.ToString()}: {listOfObjects[isTeacherOrSubject]}
 Elever:
 ");
-
+                    toLowerValue = "";
                     foreach (var objects in listOfObjects)
                     {
                         if (objects.GetType() == typeof(string[]))
@@ -99,6 +110,10 @@ Elever:
                             }
                         }
                     }
+                }
+                else if (toLowerValue == null)
+                {
+                    continue;
                 }
             }
             if (tempList.Count <= 0) return null;
