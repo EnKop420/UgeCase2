@@ -8,6 +8,6 @@ namespace UgeCase2.Codes.Interface_Implemented_Classes
 {
     internal interface IShowResult
     {
-        public string[] ShowResult(List<List<object>> list, string? ChoosenEnum, string? searchValue);
+        public string[] ShowResult(List<List<object>> list, string? ChoosenEnum, string? searchValue, string[]? showAllOptions);
     }
 }

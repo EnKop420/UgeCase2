@@ -8,7 +8,7 @@ namespace UgeCase2.Codes.Interface_Implemented_Classes
 {
     internal class GetStudents : IShowResult
     {
-        public string[] ShowResult(List<List<object>> list, string? choosenEnum, string? searchValue)
+        public string[] ShowResult(List<List<object>> list, string? choosenEnum, string? searchValue, string[]? showAllOptions)
         {
             if (choosenEnum.Equals(EnumForTeacherStudents.Elev.ToString()))
             {

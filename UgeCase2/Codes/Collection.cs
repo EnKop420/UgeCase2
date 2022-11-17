@@ -64,31 +64,41 @@ namespace UgeCase2.Codes
             return subjects;
         }
 
-        public string[] TeacherSubjectSearch(List<List<object>> array, string GetThisValue, string EnumValue)
+        public string[] TeacherSubjectSearch(List<List<object>> array, string GetThisValue, string EnumValue, string[]? showAllOptions)
         {
             List<string> tempList = new List<string>();
             int isTeacherOrSubject = 1;
             string? toLowerValue = null;
             string? GetThisValueToLower = GetThisValue.ToLower();
+            bool isCorrectSearchMethod = false;
+
             if (EnumValue == EnumForTeacherStudents.Lærer.ToString())
             {
                 EnumValue = EnumForTeacherStudents.Fag.ToString();
                 isTeacherOrSubject = 0;
             }
             else
-            { EnumValue = EnumForTeacherStudents.Lærer.ToString(); }
-
+            { 
+                EnumValue = EnumForTeacherStudents.Lærer.ToString(); 
+            }
+            foreach (var value in showAllOptions)
+            {
+                if (GetThisValueToLower == value.ToLower())
+                {
+                    isCorrectSearchMethod = true;
+                    break;
+                }
+            }
             foreach (var listOfObjects in array)
             {
-                    foreach (var strings in listOfObjects)
-                    {
+                foreach (var strings in listOfObjects)
+                {
                     string? stringValue = strings.ToString().ToLower();
-
-                        if (stringValue == GetThisValueToLower.ToLower() && stringValue.GetType() == typeof(string))
-                        {
-                            toLowerValue = strings.ToString().ToLower();
-                        }
+                    if (stringValue == GetThisValueToLower.ToLower() && stringValue.GetType() == typeof(string) && isCorrectSearchMethod)
+                    {
+                        toLowerValue = strings.ToString().ToLower();
                     }
+                }
                 if (toLowerValue == GetThisValueToLower)
                 {
                     tempList.Add(
