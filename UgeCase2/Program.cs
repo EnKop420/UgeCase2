@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net.Security;
-using UgeCase2.Codes;
 
 Collection list = new Collection();
 
@@ -17,10 +16,6 @@ while (tryAgain)
 	bool canParseToInt = Int32.TryParse(stringInput, out int userInput);
 	if (passIntVal.Contains(userInput) && canParseToInt)
 	{
-        GetTeachers teachers = new();
-        GetStudents students = new();
-        GetSubjects subjects = new();
-
         string? ChoosenEnumValue = Enum.GetName(typeof(EnumForTeacherStudents), userInput);
 		string[]? showAllOptions = null;
         string[] ShowResult = null;
@@ -87,7 +82,7 @@ while (tryAgain)
             }
             else if (ChoosenEnumValue == "Fag")
             {
-                ShowResult = (new TeacherStudentSubject(new GetSubjects(), returnedList, ChoosenEnumValue, searchValue).result);
+                ShowResult = (new TeacherStudentSubject(new GetTeachers(), returnedList, ChoosenEnumValue, searchValue).result);
 
 				if (ShowResult == null)
 				{
@@ -95,7 +90,7 @@ while (tryAgain)
 				}
                 for (int i = 0; i < ShowResult.Length; i++)
                 {
-					Console.WriteLine($"-------------------------------------------------\nDu søgte efter: {searchValue}");
+					//Console.WriteLine($"-------------------------------------------------\nDu søgte efter: {searchValue}");
                     Console.WriteLine(ShowResult[i]);
                 }
 				Console.ReadKey();

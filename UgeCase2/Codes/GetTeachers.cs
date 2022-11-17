@@ -10,10 +10,10 @@ namespace UgeCase2.Codes
     {
         public string[] ShowResult(List<List<object>> list, string? choosenEnum, string? searchValue)
         {
-            if (choosenEnum.Equals(EnumForTeacherStudents.Lærer.ToString()))
+            if (choosenEnum.Equals(EnumForTeacherStudents.Lærer.ToString()) || choosenEnum.Equals(EnumForTeacherStudents.Fag.ToString()))
             {
             Collection getTeacher = new();
-            string[]? result = getTeacher.TeacherSearch(list, searchValue);
+            string[]? result = getTeacher.TeacherSubjectSearch(list, searchValue, choosenEnum);
                 return result;
             }
             return null;

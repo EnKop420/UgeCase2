@@ -11,13 +11,11 @@ namespace UgeCase2.Codes
     internal class Collection
     {
         string[] _allSubjects = { "Clientsideprogrammering", "Studieteknik", "Grundlæggende programmering", "OOP", "Databaseprogrammering", "Computerteknologi", "Netværk" };
-        string[] _allStudents = { "Amanda Gudmand", "Aleksander Runge", "Adil Ajak", "Camilla Kløjgaard", "Dennis Paaske", "Iheb Boukthir", "Jakob Rasmussen", "Micki Olsen", "Mikkel Rantala", "Mikkel Jensen", "Mikkel Kjærgaard", "Niclas Jensen", "Ozan Korkmaz", "Rasmus Wiell", "Rune Hansen", "Sanjit Poudel" };
+        string[] _allStudents = { "Alexander Runge", "Amanda Gudmand", "Adil Ajak", "Camilla Klojgaard", "Dennis Paaske", "Iheb Boukthir", "Jakob Rasmussen", "Micki Olsen", "Mikkel Rantala", "Mikkel Jensen", "Mikkel Kjærgaard", "Niclas Jensen", "Ozan Korkmaz", "Rasmus Wiell", "Rune Hansen", "Sanjit Poudel" };
         string[] _studieteknikStudents = { "Amanda Gudmand", "Aleksander Runge", "Adil Ajak", "Dennis Paaske", "Iheb Boukthir", "Jakob Rasmussen", "Micki Olsen", "Mikkel Rantala", "Mikkel Jensen", "Mikkel Kjærgaard", "Niclas Jensen", "Rasmus Wiell", "Rune Hansen", "Sanjit Poudel" };
         string[] _allTeachers = { "Peter Lindenskov", "Niels Olesen", "Jan Johansen", "Henrik Poulsen" };
-
         public List<List<object>> ListCreation()
         {
-
             List<object> clientsideprogrammering = new();
             clientsideprogrammering.Add(_allSubjects[0]);
             clientsideprogrammering.Add(_allTeachers[0]);
@@ -33,7 +31,7 @@ namespace UgeCase2.Codes
             grundlæggendeprogrammering.Add(_allTeachers[1]);
             grundlæggendeprogrammering.Add(_allStudents);
 
-            List<object> oop= new();
+            List<object> oop = new();
             oop.Add(_allSubjects[3]);
             oop.Add(_allTeachers[1]);
             oop.Add(_allStudents);
@@ -66,24 +64,30 @@ namespace UgeCase2.Codes
             return subjects;
         }
 
-    public string[] TeacherSearch(List<List<object>>Array, string GetThisValue)
-    {
+        public string[] TeacherSubjectSearch(List<List<object>> array, string GetThisValue, string EnumValue)
+        {
             List<string> tempList = new List<string>();
+            int isTeacherOrSubject = 1;
+            if (EnumValue == EnumForTeacherStudents.Lærer.ToString())
+            {
+                EnumValue = EnumForTeacherStudents.Fag.ToString();
+                isTeacherOrSubject = 0;
+            }
+            else
+            { EnumValue = EnumForTeacherStudents.Lærer.ToString(); }
 
-            foreach (var lists in Array)
-             {
-                if (lists.Contains(GetThisValue))
+            foreach (var listOfObjects in array)
+            {
+                if (listOfObjects.Contains(GetThisValue))
                 {
                     tempList.Add(
-@$"
+@$"-----------------------------------------------
 Du søgte efter: {GetThisValue}
-Fag: {lists[0]}
------------------------------------------------
+{EnumValue.ToString()}: {listOfObjects[isTeacherOrSubject]}
 Elever:
-
 ");
 
-                    foreach (var objects in lists)
+                    foreach (var objects in listOfObjects)
                     {
                         if (objects.GetType() == typeof(string[]))
                         {
@@ -96,31 +100,30 @@ Elever:
                         }
                     }
                 }
-        }
+            }
             if (tempList.Count <= 0) return null;
 
             return tempList.ToArray();
-    }
-    public string[] StudentSearch(List<List<object>>Array, string GetThisValue)
+        }
+        public string[] StudentSearch(List<List<object>> array, string GetThisValue)
         {
             List<string> tempList = new List<string>();
             bool isBreak = false;
 
-            foreach (var lists in Array)
+            foreach (var lists in array)
             {
                 foreach (var firstLoop in lists)
                 {
                     if (firstLoop.GetType() == typeof(string[]))
                     {
                         string[] convertToArray = (string[])firstLoop;
-                        foreach (var studentNames in convertToArray)
+                        convertToArray = Array.ConvertAll(convertToArray, a => a.ToLower());
+
+                        if (convertToArray.Contains(GetThisValue.ToLower()))
                         {
-                            if (studentNames.Contains(GetThisValue))
-                            {
-                                isBreak = true;
-                                break;
-                            }
+                            isBreak = true;
                         }
+                        else { isBreak = false; }
                         if (isBreak) break;
                     }
                 }
@@ -135,60 +138,25 @@ Fag: {lists[0].ToString()}
                     isBreak = false;
                 }
                 foreach (var objects in lists)
-                    {
-                        if (objects.GetType() == typeof(string[]))
-                        {
-                            string[] convertToArray = (string[])objects;
-                            foreach (var studentNames in convertToArray)
-                            {
-                                if (studentNames.Contains(GetThisValue))
-                                {
-                                isBreak = true;
-                                break;
-                                }
-                        }
-                        if (isBreak) break;
-                        }
-                    }
-            }
-            if (tempList.Count <= 0) return null;
-
-            return tempList.ToArray();
-        }
-    public string[] SubjectSearch(List<List<object>> Array, string GetThisValue)
-        {
-            List<string> tempList = new List<string>();
-
-            foreach (var lists in Array)
-            {
-                if (lists.Contains(GetThisValue))
                 {
-                    tempList.Add(
-@$"Lærer: {lists[1].ToString()}
------------------------------------------------
-Elever:
-
-");
-
-                    foreach (var objects in lists)
+                    if (objects.GetType() == typeof(string[]))
                     {
-                        if (objects.GetType() == typeof(string[]))
+                        string[] convertToArray = (string[])objects;
+                        convertToArray = Array.ConvertAll(convertToArray, a => a.ToLower());
+                        if (convertToArray.Contains(GetThisValue.ToLower()))
                         {
-                            string[] convertToArray = (string[])objects;
-                            foreach (var studentNames in convertToArray)
-                            {
-                                tempList.Add(studentNames);
-
-                            }
+                            isBreak = true;
                         }
+                        else { isBreak = false; }
+                        if (isBreak) break;
                     }
-
                 }
             }
             if (tempList.Count <= 0) return null;
+
             return tempList.ToArray();
         }
-    public string[] GetOptions(string? GetValueForThisEnum)
+        public string[] GetOptions(string? GetValueForThisEnum)
         {
             if (GetValueForThisEnum.Equals(EnumForTeacherStudents.Lærer.ToString()))
             {

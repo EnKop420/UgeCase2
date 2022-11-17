@@ -21,10 +21,6 @@ namespace UgeCase2.Codes
                 {
                     result = new GetStudents().ShowResult(list, ChoosenEnum, searchValue);
                 }
-                else if (teacherStudentSubject.GetType() == typeof(GetSubjects))
-                {
-                    result = new GetSubjects().ShowResult(list, ChoosenEnum, searchValue);
-                }
             }
         }
     }
